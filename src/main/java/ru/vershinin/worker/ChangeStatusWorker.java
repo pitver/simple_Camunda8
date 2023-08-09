@@ -17,7 +17,7 @@ import java.util.Arrays;
 @Component
 public class ChangeStatusWorker {
 
-    @JobWorker(type = "add_bid")
+    @JobWorker(type = "change_status")
     public void changeStatus(final JobClient client, final ActivatedJob job, @VariablesAsType BidDto bidDto, @Variable String status){
         log.info(bidDto.toString());
 
@@ -27,7 +27,7 @@ public class ChangeStatusWorker {
                 .ifPresent(bidDto::setStatusBid);
 
         client.newCompleteCommand(job.getKey())
-                .variables("{\"bidDto\": \"" + bidDto + "\"}")
+                .variables("{\"bidDto\": \"" + bidDto + "\", \"{\"action\": \"" + bidDto.getFlag() + "\"}")
                 .send()
                 .exceptionally( throwable -> { throw new RuntimeException("Could not complete job " + job, throwable); });
         log.info(bidDto.getStatusBid().getName());

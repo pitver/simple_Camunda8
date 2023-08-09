@@ -5,6 +5,8 @@ import io.camunda.zeebe.client.api.response.ProcessInstanceEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +26,7 @@ public class RunController {
     private final ZeebeClient client;
 
     @PostMapping("/start")
-    public void startProcessInstance(@RequestBody BidDto bidDto) {
+    public ResponseEntity<String> startProcessInstance(@RequestBody BidDto bidDto) {
 
         log.info("Starting process `" + ProcessConstants.BPMN_PROCESS_CREATE_BID_OPERATOR);
 
@@ -36,8 +38,12 @@ public class RunController {
                 .send()
                 .join();
         log.info(instanceEvent.getBpmnProcessId());
-        log.info(String.valueOf(instanceEvent.getProcessInstanceKey()));
-    }
+        var result = String.valueOf(instanceEvent.getProcessInstanceKey());
+        log.info(result);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body("Started process instance " + result);
+
    /* @PostMapping("/std")
     public void correlateMsg(@RequestBody GetVar varb){
         Map<String,String> wr=new HashMap<>();
@@ -49,6 +55,7 @@ public class RunController {
                 .send();
     }*/
 
+    }
 }
 
 

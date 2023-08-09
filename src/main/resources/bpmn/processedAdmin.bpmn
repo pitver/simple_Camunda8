@@ -38,14 +38,20 @@
     </bpmn:serviceTask>
     <bpmn:serviceTask id="Activity_1b82avm" name="изменить статус на обработано">
       <bpmn:extensionElements>
-        <zeebe:taskDefinition type="status_processed" />
+        <zeebe:taskDefinition type="change_status" />
+        <zeebe:ioMapping>
+          <zeebe:output source="=PROCESSED" target="status" />
+        </zeebe:ioMapping>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0vxe83x</bpmn:incoming>
       <bpmn:outgoing>Flow_0904qn5</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:serviceTask id="Activity_1d6p2v0" name="изменить статус на отклонено">
       <bpmn:extensionElements>
-        <zeebe:taskDefinition type="status_rejected" />
+        <zeebe:taskDefinition type="change_status" />
+        <zeebe:ioMapping>
+          <zeebe:output source="=REJECTED" target="status" />
+        </zeebe:ioMapping>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_07ockpi</bpmn:incoming>
       <bpmn:outgoing>Flow_1a6g35k</bpmn:outgoing>
@@ -110,14 +116,6 @@
         <dc:Bounds x="120" y="80" width="1280" height="380" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_0ji63n4_di" bpmnElement="TextAnnotation_0ji63n4">
-        <dc:Bounds x="310" y="140" width="100" height="41" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_02x0ug0_di" bpmnElement="TextAnnotation_02x0ug0">
-        <dc:Bounds x="490" y="133" width="100" height="55" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0ngglxc_di" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="229" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -151,14 +149,14 @@
       <bpmndi:BPMNShape id="Activity_1lkfzrc_di" bpmnElement="Activity_1jbgoir">
         <dc:Bounds x="880" y="320" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Association_0xb7nkb_di" bpmnElement="Association_0xb7nkb">
-        <di:waypoint x="301" y="233" />
-        <di:waypoint x="340" y="181" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_0nyjonf_di" bpmnElement="Association_0nyjonf">
-        <di:waypoint x="548" y="229" />
-        <di:waypoint x="544" y="188" />
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_0ji63n4_di" bpmnElement="TextAnnotation_0ji63n4">
+        <dc:Bounds x="310" y="140" width="100" height="41" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_02x0ug0_di" bpmnElement="TextAnnotation_02x0ug0">
+        <dc:Bounds x="490" y="133" width="100" height="55" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1qyudh4_di" bpmnElement="Flow_1qyudh4">
         <di:waypoint x="215" y="247" />
         <di:waypoint x="272" y="247" />
@@ -200,6 +198,14 @@
       <bpmndi:BPMNEdge id="Flow_0tvou17_di" bpmnElement="Flow_0tvou17">
         <di:waypoint x="980" y="168" />
         <di:waypoint x="1062" y="168" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0xb7nkb_di" bpmnElement="Association_0xb7nkb">
+        <di:waypoint x="301" y="233" />
+        <di:waypoint x="340" y="181" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0nyjonf_di" bpmnElement="Association_0nyjonf">
+        <di:waypoint x="548" y="229" />
+        <di:waypoint x="544" y="188" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

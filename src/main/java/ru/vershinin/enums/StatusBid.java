@@ -2,7 +2,7 @@ package ru.vershinin.enums;
 
 public enum StatusBid {
     NEW("новая заявка"),
-    PROCESS("обработано"),
+    PROCESSED("обработано"),
     REJECTED("отклонено");
 
     private final String name;

@@ -49,7 +49,10 @@
     </bpmn:serviceTask>
     <bpmn:serviceTask id="Activity_14kypdg" name="статус new">
       <bpmn:extensionElements>
-        <zeebe:taskDefinition type="status_new" />
+        <zeebe:taskDefinition type="change_status" />
+        <zeebe:ioMapping>
+          <zeebe:output source="=NEW" target="status" />
+        </zeebe:ioMapping>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0la6uve</bpmn:incoming>
       <bpmn:outgoing>Flow_1n5bipz</bpmn:outgoing>

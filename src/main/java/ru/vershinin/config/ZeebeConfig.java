@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Primary;
 public class ZeebeConfig {
 
     @Bean
-   @Primary
+    @Primary
     public ZeebeClient zeebeClient() {
         // Указать адрес и порт брокера Zeebe
         String brokerAddress = "localhost:26500";

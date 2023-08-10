@@ -1,0 +1,12 @@
+zeebe:
+  client:
+    broker:
+      gateway-address: localhost:26500
+    security:
+      plaintext: true
+server:
+  port: 9090
+
+spring:
+  main:
+    allow-bean-definition-overriding: true

@@ -1,0 +1,43 @@
+{
+  "components": [
+    {
+      "label": "Введите  UserId",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1nj86z6",
+        "columns": null
+      },
+      "id": "Field_0rzfadf",
+      "key": "userId"
+    },
+    {
+      "label": "Введите OrderId",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0umxdcj",
+        "columns": null
+      },
+      "id": "Field_1upebmq",
+      "key": "orderId"
+    },
+    {
+      "label": "Получить Inn",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_02e9mth",
+        "columns": null
+      },
+      "id": "Field_0ng3svw",
+      "key": "action"
+    }
+  ],
+  "type": "default",
+  "id": "StartBidForm",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.11.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.19.0",
+  "schemaVersion": 8
+}

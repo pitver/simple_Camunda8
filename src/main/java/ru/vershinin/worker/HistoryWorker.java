@@ -7,11 +7,11 @@ import io.camunda.zeebe.spring.client.annotation.Variable;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AddEntryToDBWorker {
+public class HistoryWorker {
 
-    @JobWorker(type = "add_bid")
-    public void addEntry(final JobClient client, final ActivatedJob job, @Variable String someResult){
-
+    @JobWorker(type = "add_history")
+    public void addHistory(final JobClient client, final ActivatedJob job, @Variable String someResult){
         // TODO document why this method is empty
     }
+
 }

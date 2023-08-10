@@ -35,7 +35,7 @@
     <bpmn:sequenceFlow id="Flow_09c8wk1" sourceRef="Activity_12bsklg" targetRef="Activity_1kqe5rq" />
     <bpmn:sendTask id="Activity_12bsklg" name="создать заявку для администратора">
       <bpmn:extensionElements>
-        <zeebe:taskDefinition type="=&#34;responseFor_&#34; + id" />
+        <zeebe:taskDefinition type="sendMessage" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1odi1hi</bpmn:incoming>
       <bpmn:outgoing>Flow_09c8wk1</bpmn:outgoing>
@@ -64,14 +64,14 @@
       <bpmn:incoming>Flow_1n5bipz</bpmn:incoming>
       <bpmn:outgoing>Flow_1ovxmqa</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="Activity_0ywy7d7" name="Change element type" zeebe:modelerTemplate="io.camunda.examples.RestConnector">
+    <bpmn:serviceTask id="Activity_0ywy7d7" name="GetInn" zeebe:modelerTemplate="io.camunda.examples.RestConnector">
       <bpmn:extensionElements>
         <zeebe:taskDefinition type="http" />
         <zeebe:ioMapping>
           <zeebe:output source="= body" target="response" />
         </zeebe:ioMapping>
         <zeebe:taskHeaders>
-          <zeebe:header key="url" value="http://localhost:8081/getINN" />
+          <zeebe:header key="url" value="http://localhost:8082/api/v1/util/getInn" />
           <zeebe:header key="method" value="get" />
         </zeebe:taskHeaders>
       </bpmn:extensionElements>
@@ -81,9 +81,6 @@
     <bpmn:serviceTask id="Activity_1kqe5rq" name="уведомить">
       <bpmn:extensionElements>
         <zeebe:taskDefinition type="mail" />
-        <zeebe:ioMapping>
-          <zeebe:output source="=1" target="type" />
-        </zeebe:ioMapping>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_09c8wk1</bpmn:incoming>
       <bpmn:outgoing>Flow_073u6hg</bpmn:outgoing>

@@ -31,5 +31,6 @@ public class ChangeStatusWorker {
                 .send()
                 .exceptionally( throwable -> { throw new RuntimeException("Could not complete job " + job, throwable); });
         log.info(bidDto.getStatusBid().getName());
+
     }
 }

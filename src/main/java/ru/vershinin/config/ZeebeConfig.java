@@ -5,11 +5,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
-@Configuration
+//@Configuration
 public class ZeebeConfig {
 
-    @Bean
-   @Primary
+   // @Bean
+   // @Primary
     public ZeebeClient zeebeClient() {
         // Указать адрес и порт брокера Zeebe
         String brokerAddress = "localhost:26500";

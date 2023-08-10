@@ -2,9 +2,11 @@ package ru.vershinin.controller;
 
 import io.camunda.zeebe.client.ZeebeClient;
 import io.camunda.zeebe.client.api.response.ProcessInstanceEvent;
+import io.camunda.zeebe.spring.client.lifecycle.ZeebeClientLifecycle;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,10 +22,13 @@ import java.util.concurrent.ExecutionException;
 
 @Slf4j
 @RestController
-@RequiredArgsConstructor
+
 public class RunController {
 
-    private final ZeebeClient client;
+
+    @Autowired
+    private ZeebeClient client;
+
 
     @PostMapping("/start")
     public ResponseEntity<String> startProcessInstance(@RequestBody BidDto bidDto) {

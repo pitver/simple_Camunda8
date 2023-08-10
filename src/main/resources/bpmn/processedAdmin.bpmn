@@ -2,8 +2,9 @@
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_00rdx5p" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.11.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.2.0">
   <bpmn:collaboration id="Collaboration_10ex2fz">
     <bpmn:participant id="Participant_0gnkp6e" name="обработка заявки админ" processRef="Process_15khy1c" />
+    <bpmn:participant id="Participant_14zuw5s" processRef="Process_1he2d87" />
   </bpmn:collaboration>
-  <bpmn:process id="Process_15khy1c" isExecutable="true">
+  <bpmn:process id="Process_15khy1c" name="processed_Admin" isExecutable="false">
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_1qyudh4</bpmn:outgoing>
       <bpmn:messageEventDefinition id="MessageEventDefinition_0lgbb5p" messageRef="Message_1trtfla" />
@@ -109,7 +110,25 @@
       <zeebe:subscription correlationKey="=1" />
     </bpmn:extensionElements>
   </bpmn:message>
-  <bpmn:message id="Message_1trtfla" name="=&#34;responseFor_&#34; + id" />
+  <bpmn:message id="Message_1trtfla" name="returnMessage" />
+  <bpmn:process id="Process_1he2d87" name="Test1" isExecutable="true">
+    <bpmn:startEvent id="Event_0i1zg45">
+      <bpmn:outgoing>Flow_0ehvlix</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0e1paxy" messageRef="Message_1trtfla" />
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0ehvlix" sourceRef="Event_0i1zg45" targetRef="Activity_0u1l7he" />
+    <bpmn:endEvent id="Event_09zvep4">
+      <bpmn:incoming>Flow_06nbf41</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_06nbf41" sourceRef="Activity_0u1l7he" targetRef="Event_09zvep4" />
+    <bpmn:serviceTask id="Activity_0u1l7he">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="test123" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0ehvlix</bpmn:incoming>
+      <bpmn:outgoing>Flow_06nbf41</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_10ex2fz">
       <bpmndi:BPMNShape id="Participant_0gnkp6e_di" bpmnElement="Participant_0gnkp6e" isHorizontal="true">
@@ -206,6 +225,26 @@
       <bpmndi:BPMNEdge id="Association_0nyjonf_di" bpmnElement="Association_0nyjonf">
         <di:waypoint x="548" y="229" />
         <di:waypoint x="544" y="188" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Participant_14zuw5s_di" bpmnElement="Participant_14zuw5s" isHorizontal="true">
+        <dc:Bounds x="120" y="480" width="600" height="250" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0g806wb" bpmnElement="Event_0i1zg45">
+        <dc:Bounds x="172" y="562" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_09zvep4_di" bpmnElement="Event_09zvep4">
+        <dc:Bounds x="412" y="562" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0xgw4vr_di" bpmnElement="Activity_0u1l7he">
+        <dc:Bounds x="260" y="540" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0ehvlix_di" bpmnElement="Flow_0ehvlix">
+        <di:waypoint x="208" y="580" />
+        <di:waypoint x="260" y="580" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_06nbf41_di" bpmnElement="Flow_06nbf41">
+        <di:waypoint x="360" y="580" />
+        <di:waypoint x="412" y="580" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

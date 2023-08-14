@@ -42,10 +42,7 @@ public class ChangeStatusWorker {
         variable.put("action",bid.getFlag());
         client.newCompleteCommand(job.getKey())
                 .variables(variable)
-                .send()
-                .exceptionally(throwable -> {
-                    throw new RuntimeException("Could not complete job " + job, throwable);
-                });
+                .send().join();
         log.info(bid.getStatusBid().getName());
 
     }

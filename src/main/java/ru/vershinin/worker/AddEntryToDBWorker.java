@@ -11,7 +11,7 @@ import ru.vershinin.dto.BidDto;
 public class AddEntryToDBWorker {
 
     @JobWorker(type = "add_bid")
-    public void addEntry(@VariablesAsType BidDto bidDto){
-       log.info(bidDto.toString());
+    public void addEntry(@VariablesAsType BidDto bidDto) {
+        log.info("AddEntryToDBWorker: {}", bidDto.toString());
     }
 }

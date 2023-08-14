@@ -1,13 +1,14 @@
 package ru.vershinin.dto;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import ru.vershinin.enums.StatusBid;
 
 @Data
 @ToString
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class BidDto {
 
     private String numberBid;

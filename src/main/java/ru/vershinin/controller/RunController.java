@@ -45,18 +45,29 @@ public class RunController {
                 .status(HttpStatus.OK)
                 .body("Started process instance " + result);
     }
-    @GetMapping("/inn/{inn}")
-    public void correlateMsg(@PathVariable String inn){
-        Map<String,String> wr=new HashMap<>();
+
+    @GetMapping("/accept/{inn}")
+    public void correlateMsgAccept(@PathVariable String inn) {
 
         client.newPublishMessageCommand()
                 .messageName("accept")
+                .correlationKey(inn)
+                .send().join();
+    }
+
+    @GetMapping("/processed/{inn}")
+    public void correlateMsgProcessed(@PathVariable String inn) {
+        Map<String, Integer> wr = new HashMap<>();
+        wr.put("decision",0);
+
+        client.newPublishMessageCommand()
+                .messageName("processed")
                 .correlationKey(inn)
                 .variables(wr)
                 .send().join();
     }
 
-    }
+ }
 
 
 

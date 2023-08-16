@@ -65,6 +65,9 @@
     <bpmn:serviceTask id="Activity_1kqe5rq" name="уведомить">
       <bpmn:extensionElements>
         <zeebe:taskDefinition type="mail" />
+        <zeebe:ioMapping>
+          <zeebe:input source="=1" target="type" />
+        </zeebe:ioMapping>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_09c8wk1</bpmn:incoming>
       <bpmn:outgoing>Flow_073u6hg</bpmn:outgoing>
@@ -128,12 +131,12 @@
       <bpmndi:BPMNShape id="Activity_1253w0e_di" bpmnElement="Activity_1kqe5rq">
         <dc:Bounds x="1360" y="110" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0le9gmc_di" bpmnElement="Activity_0ywy7d7">
+        <dc:Bounds x="990" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="TextAnnotation_0gwdr3t_di" bpmnElement="TextAnnotation_0gwdr3t">
         <dc:Bounds x="180" y="90" width="100" height="30" />
         <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0le9gmc_di" bpmnElement="Activity_0ywy7d7">
-        <dc:Bounds x="990" y="200" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0la6uve_di" bpmnElement="Flow_0la6uve">
         <di:waypoint x="410" y="150" />

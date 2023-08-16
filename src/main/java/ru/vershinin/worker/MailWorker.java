@@ -8,20 +8,10 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class TestWorker {
-
-    @JobWorker(type = "test123")
-    public void send(final ActivatedJob job, @Variable int response) {
-
-        log.info("inn {}", response);
-
-
-    }@JobWorker(type = "mail")
-    public void sendMail() {
-
-        log.info("send mail");
-
-
+public class MailWorker {
+    @JobWorker(type = "mail")
+    public void mail(final ActivatedJob job,@Variable int type) {
+        log.info("mail type: {}", type);
     }
 
 }
